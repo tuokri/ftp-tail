@@ -94,7 +94,11 @@ export default class FTPTail extends EventEmitter {
         // get contents of file
         const data = await fs.promises.readFile(this.tempFilePath, 'utf8');
 
-        console.log(data);
+        const debugData = data.split('\r\n');
+        console.log('--- first');
+        console.log(debugData[0].raw);
+        console.log('--- last');
+        console.log(debugData[-1].raw);
 
         // only continue if something was fetched
         if (data.length > 0) {
